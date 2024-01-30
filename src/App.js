@@ -8,14 +8,11 @@ function App() {
       tg.ready();
       }, [])
 
-  const OnClose = () => {
-    tg.close()
-  }
 
 
   return (
     <div className="App">
-    Привет Настя<button onClick={OnClose}>Закрыть</button>
+
     </div>
   );
 }
