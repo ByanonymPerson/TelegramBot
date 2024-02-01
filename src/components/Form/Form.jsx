@@ -1,26 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import './Form.css'
 import { useTelegram } from "../../hooks/useTelegram";
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAx7hGnf2H2od3EfujXlmbe4mxYwBwr-BQ",
-    authDomain: "telegramstore-96e1e.firebaseapp.com",
-    databaseURL: "https://telegramstore-96e1e-default-rtdb.firebaseio.com",
-    projectId: "telegramstore-96e1e",
-    storageBucket: "telegramstore-96e1e.appspot.com",
-    messagingSenderId: "454886096625",
-    appId: "1:454886096625:web:8fb97c3a405772d44f7350",
-    measurementId: "G-S47G5VXH3Z"
-  };
-  
-
-// Инициализация Firebase приложения
-const firebaseApp = initializeApp(firebaseConfig);
-const database = getDatabase(firebaseApp);
 
 const Form = () => {
      const [name,setName] = useState('');
@@ -32,14 +12,7 @@ const Form = () => {
             name,
             time,
          }
-         // Отправка данных на базу данных Firebase
-         set(ref(database, 'orders/' + Date.now()), data)
-            .then(() => {
-                console.log('Data successfully sent to Firebase');
-            })
-            .catch((error) => {
-                console.error('Error sending data to Firebase: ', error);
-            });
+         tg.sendData(JSON.stringify(data));
      }, [name,time])
 
      useEffect(()=>{
