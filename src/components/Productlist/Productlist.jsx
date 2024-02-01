@@ -4,7 +4,7 @@ import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
 
 const products = [
-    { id: '1', title: 'Angry vape', price: 15, description: 'Арбузная жвачка' },
+    { id: '1', title: 'Angry vape', price: 15, description: 'Арбузная жвачка' , img:'watermelon_gam.png' },
     { id: '2', title: 'Angry vape', price: 15, description: 'Арбуз' },
     { id: '3', title: 'Angry vape', price: 15, description: 'Йогурт с киви' },
     { id: '4', title: 'Angry vape', price: 15, description: 'Синяя малина' },
