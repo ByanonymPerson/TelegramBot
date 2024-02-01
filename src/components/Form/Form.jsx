@@ -4,7 +4,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 
- const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyAx7hGnf2H2od3EfujXlmbe4mxYwBwr-BQ",
     authDomain: "telegramstore-96e1e.firebaseapp.com",
     databaseURL: "https://telegramstore-96e1e-default-rtdb.firebaseio.com",
@@ -31,7 +31,7 @@ const Form = () => {
         setTime(e.target.value);
     }
 
-    const sendDataToFirebase = () => {
+    const sendDataToFirebase = useCallback(() => {
         const data = {
             name,
             time,
@@ -44,7 +44,7 @@ const Form = () => {
             .catch((error) => {
                 console.error('Error sending data to Firebase: ', error);
             });
-    };
+    }, [name, time, database]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', sendDataToFirebase);
@@ -56,7 +56,7 @@ const Form = () => {
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
-        })
+        });
     }, [tg]);
 
     useEffect(() => {
